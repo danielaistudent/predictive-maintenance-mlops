@@ -1,7 +1,6 @@
 .git
 .github
 data/
-models/
 mlruns/
 mlartifacts/
 venv/
