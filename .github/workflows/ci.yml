@@ -68,23 +68,18 @@ jobs:
           python -m src.generate_data
           python -m src.train
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - name: Build Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: false
-          tags: predictive-maintenance-api:ci
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        run: docker build -t predictive-maintenance-api:ci .
 
       - name: Test Docker image
         run: |
           docker run -d --name test-api -p 8000:8000 predictive-maintenance-api:ci
-          sleep 5
+          sleep 10
+          echo "--- Container logs ---"
+          docker logs test-api
+          echo "--- Health check ---"
           curl -f http://localhost:8000/ || (docker logs test-api && exit 1)
+          echo "--- Info endpoint ---"
           curl -f http://localhost:8000/info || (docker logs test-api && exit 1)
           docker stop test-api
           docker rm test-api
