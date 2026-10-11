@@ -1,0 +1,17 @@
+.git
+.github
+data/
+models/
+mlruns/
+mlartifacts/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+notebooks/
+docs/
+*.md
+.env
+*.log

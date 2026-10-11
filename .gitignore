@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Adat — NE menjen a Git-be (nagy fájlok, reprodukálható)
+data/
+*.csv
+*.parquet
+
+# Modellek — szintén ne
+models/
+*.pkl
+*.joblib
+*.pt
+*.h5
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Env és secrets
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
