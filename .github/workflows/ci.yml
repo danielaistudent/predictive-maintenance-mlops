@@ -81,5 +81,10 @@ jobs:
           curl -f http://localhost:8000/ || (docker logs test-api && exit 1)
           echo "--- Info endpoint ---"
           curl -f http://localhost:8000/info || (docker logs test-api && exit 1)
+          echo "--- Predict endpoint ---"
+          curl -f -X POST http://localhost:8000/predict \
+            -H "Content-Type: application/json" \
+            -d '{"features":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]}' \
+            || (docker logs test-api && exit 1)
           docker stop test-api
           docker rm test-api
